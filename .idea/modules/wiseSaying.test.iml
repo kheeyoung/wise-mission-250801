@@ -7,8 +7,9 @@
       <sourceFolder url="file://$MODULE_DIR$/../../wiseSaying/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../wiseSaying/src/test/resources" type="java-test-resource" />
     </content>
-    <orderEntry type="jdk" jdkName="21" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="wiseSaying.main" />
     <orderEntry type="library" name="Gradle: org.junit.jupiter:junit-jupiter:5.9.1" level="project" />
     <orderEntry type="library" name="Gradle: org.junit.jupiter:junit-jupiter-params:5.9.1" level="project" />
     <orderEntry type="library" name="Gradle: org.junit.jupiter:junit-jupiter-api:5.9.1" level="project" />

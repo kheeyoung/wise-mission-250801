@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/wise-mission-250801.iml" filepath="$PROJECT_DIR$/.idea/wise-mission-250801.iml" />
       <module fileurl="file://$PROJECT_DIR$/wiseSaying.iml" filepath="$PROJECT_DIR$/wiseSaying.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wiseSaying.main.iml" filepath="$PROJECT_DIR$/.idea/modules/wiseSaying.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/wiseSaying.test.iml" filepath="$PROJECT_DIR$/.idea/modules/wiseSaying.test.iml" />
     </modules>
   </component>

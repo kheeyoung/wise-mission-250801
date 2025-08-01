@@ -1,4 +1,4 @@
-package main.java.com.ll.wiseSaying;
+package com.ll.wiseSaying;
 
 import java.io.*;
 import java.util.ArrayList;

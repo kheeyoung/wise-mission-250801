@@ -1,8 +1,5 @@
-package main.java.com.ll.wiseSaying;
+package com.ll.wiseSaying;
 
-import main.java.com.ll.wiseSaying.WiseSayingController;
-import main.java.com.ll.wiseSaying.WiseSayingRepository;
-import main.java.com.ll.wiseSaying.WiseSayingService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,12 +14,16 @@ public class App {
         System.out.println("== 명언 앱 ==");
         while (true) {
             String commend = phaseController.getCommend();
-            switch (commend) {
+            switch (commend.substring(0,2)) {
                 case "종료":
                     return;
 
                 case "목록":
-                    phaseController.showList();
+                    if(commend.length() == 2) {
+                        phaseController.showList();
+                        break;
+                    } phaseController.search(commend);
+
                     break;
 
                 case "등록":
@@ -30,16 +31,17 @@ public class App {
                     break;
 
                 case "수정":
-                    phaseController.update();
+                    phaseController.update(commend);
                     break;
 
                 case "삭제":
-                    phaseController.delete();
+                    phaseController.delete(commend);
                     break;
 
                 case "빌드":
                     phaseController.bulid();
                     break;
+
 
                 default:
                     System.out.println("알 수 없는 명령입니다. 다시 시도하세요.");

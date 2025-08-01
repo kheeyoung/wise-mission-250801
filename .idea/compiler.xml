@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="wiseSaying" target="24" />
-      <module name="wiseSaying.main" target="24" />
-      <module name="wiseSaying.test" target="24" />
+      <module name="wiseSaying" target="21" />
+      <module name="wiseSaying.main" target="21" />
+      <module name="wiseSaying.test" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>
