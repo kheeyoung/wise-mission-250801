@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="wiseSaying" external.linked.project.path="$MODULE_DIR$/wiseSaying" external.root.project.path="$MODULE_DIR$/wiseSaying" external.system.id="GRADLE" external.system.module.group="com.II" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/wiseSaying">
+      <excludeFolder url="file://$MODULE_DIR$/wiseSaying/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/wiseSaying/build" />
+    </content>
+    <orderEntry type="jdk" jdkName="21" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
