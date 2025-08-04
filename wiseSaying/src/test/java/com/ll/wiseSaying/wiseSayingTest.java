@@ -10,7 +10,7 @@ public class wiseSayingTest {
         try {
             int id = service.insert("삶은 짧고 예술은 길다.", "히포크라테스");
             System.out.println("명언이 추가되었습니다. ID: " + id);
-            service.showList();
+            service.showList(1);
             System.out.println("명언 조회 완료.");
             service.update(new String[]{"1", "삶은 짧고 예술은 길다. (수정됨)", "히포크라테스 (수정됨)"});
             System.out.println("명언이 수정되었습니다. ID: 1");

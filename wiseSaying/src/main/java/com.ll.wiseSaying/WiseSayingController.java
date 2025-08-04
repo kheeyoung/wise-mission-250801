@@ -4,6 +4,7 @@ package com.ll.wiseSaying;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class WiseSayingController {
     static BufferedReader br= new BufferedReader(new java.io.InputStreamReader(System.in));
@@ -22,23 +23,34 @@ public class WiseSayingController {
         return  br.readLine();
     }
 
-    public void showList() throws IOException {
+    public void showList(String commend) throws IOException {
+        int page =1;
+        try{
+            page=Integer.parseInt(commend.split("=")[1]);
+        }catch (Exception e) {}
+
         System.out.println("번호 / 작가 / 명언");
         System.out.println("----------------------");
-        String[][] data =wss.showList();
-        for (String[] line : data) {
-            if(line[0] == null) continue; // null 체크
-            System.out.println(line[0]+" / " + line[1] + " / " + line[2]);
+
+        String[][] data =wss.showList(page);
+        int pageSize = data.length/5 + (data.length%5!=0 ? 1 : 0);
+        data =wss.cutList(data, page);
+        for (int i= data.length-1; i >= 0; i--) {
+            if(data[i][0] == null) continue; // null 체크
+            System.out.println(data[i][0]+" / " + data[i][1] + " / " + data[i][2]);
         }
+        System.out.println("----------------------\n" +
+                "페이지 : "+page+" / [" + pageSize + "]\n" );
+
     }
 
     public int getId(String commend) {
         try {
-            return Integer.parseInt(commend.split("\\?id=")[1]);
+            return Integer.parseInt(commend.split("=")[1]);
         } catch (NumberFormatException e) {
             System.out.println("숫자 형식이 아닙니다. 수정?id=숫자 형식으로 입력해주세요.");
         } catch (Exception e) {
-            System.out.println("명령어 형식이 잘못되었습니다. 수정?id=숫자 형식으로 입력해주세요.");
+            System.out.println("명령어 형식이 잘못되었습니다. 명령어?id=숫자 형식으로 입력해주세요.");
 
         }
         return -1;
@@ -83,7 +95,28 @@ public class WiseSayingController {
         String key = getKey(commend);
         if (key == "") return; // 잘못된 ID 처리
 
+        int page =1;
+        try{
+            page=Integer.parseInt(commend.split("=")[1]);
+        }catch (Exception e) {}
 
+        System.out.println("번호 / 작가 / 명언");
+        System.out.println("----------------------");
+
+        String[][] data =wss.search(key);
+        if(data.length == 0){
+            System.out.println("검색 결과가 없습니다.");
+            return;
+        }
+        data=wss.cutList(data, page);
+        int pageSize = data.length/5 + (data.length%5!=0 ? 1 : 0);
+        data =wss.cutList(data, page);
+        for (int i= data.length-1; i >= 0; i--) {
+            if(data[i][0] == null) continue; // null 체크
+            System.out.println(data[i][0]+" / " + data[i][1] + " / " + data[i][2]);
+        }
+        System.out.println("----------------------\n" +
+                "페이지 : "+page+" / [" + pageSize + "]\n" );
     }
     public String getKey(String commend) {
         try {

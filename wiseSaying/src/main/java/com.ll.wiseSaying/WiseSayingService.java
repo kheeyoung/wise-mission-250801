@@ -30,16 +30,9 @@ public class WiseSayingService {
         }
     }
 
-    public String[][] showList() throws IOException {
-        int id = getNum();
-        String[][] data = new String[id][3];
-        for (int i = id; i > 0; i--) {
-            if(! wsr.exists(i)){continue;}
-            String line = wsr.readDoc(i);
-            String[] parts = line.replace("{", "").replace("}", "").replace("\"", "")
-                    .replace("id:","").replace("quote:","").replace("writer:","").split(",");
-            data[i-1] = parts;
-        }
+    public String[][] showList(int page) throws IOException {
+        String[][] data = wsr.showListAll();
+
         return data;
     }
 
@@ -75,4 +68,35 @@ public class WiseSayingService {
         }
         wsr.makeBuildFile(data);
     }
+
+    public  String[][] search(String key) throws IOException {
+        ArrayList<String[]> result = new ArrayList<>();
+        String[][] data = wsr.showListAll();
+
+        for (String[] line : data) {
+            if (line[0] != null && (line[1].contains(key) || line[2].contains(key))) {
+                result.add(new String[]{line[0], line[1], line[2]});
+            }
+        }
+        String[][] filtered = result.toArray(new String[0][3]);
+        return filtered;
+    }
+
+    public String[][] cutList(String[][] data, int page) {
+        String[][] result = new String[5][3];
+
+        for (int i = 0; i < 5; i++) {
+            int idx = data.length - ((page - 1) * 5) - 1 - i; // 역순으로 끊어냄
+            if (idx < 0 || idx >= data.length) {
+                result[i] = new String[]{null, null, null};
+            } else if (data[idx][0] == null) {
+                result[i] = new String[]{null, null, null};
+            } else {
+                result[i] = data[idx];
+            }
+        }
+
+        return result;
+    }
+
 }

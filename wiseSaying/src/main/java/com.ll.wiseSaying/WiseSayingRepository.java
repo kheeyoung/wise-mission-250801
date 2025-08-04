@@ -64,4 +64,18 @@ public class WiseSayingRepository {
 
         fileWriter.close();
     }
+
+
+    public String[][] showListAll() throws IOException {
+        int id = Integer.parseInt(getNum());
+        String[][] data = new String[id][3];
+        for (int i = 1; i <= id; i++) {
+            if(! exists(i) ){continue;}
+            String line = readDoc(i);
+            String[] parts = line.replace("{", "").replace("}", "").replace("\"", "")
+                    .replace("id:","").replace("quote:","").replace("writer:","").split(",");
+            data[i-1] = parts;
+        }
+        return data;
+    }
 }

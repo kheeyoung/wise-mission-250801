@@ -6,8 +6,6 @@ import java.io.IOException;
 
 public class App {
     static BufferedReader br= new BufferedReader(new java.io.InputStreamReader(System.in));
-    private WiseSayingRepository wiseSayingRepository = new WiseSayingRepository();
-    private WiseSayingService wiseSayingService = new WiseSayingService();
     private WiseSayingController phaseController = new WiseSayingController();
 
     public void run() throws IOException {
@@ -19,11 +17,11 @@ public class App {
                     return;
 
                 case "목록":
-                    if(commend.length() == 2) {
-                        phaseController.showList();
+                    if(commend.startsWith("목록?page=")|| commend.length()==2) {
+                        phaseController.showList(commend);
                         break;
-                    } phaseController.search(commend);
-
+                    }
+                    phaseController.search(commend);
                     break;
 
                 case "등록":
@@ -41,6 +39,7 @@ public class App {
                 case "빌드":
                     phaseController.bulid();
                     break;
+
 
 
                 default:
